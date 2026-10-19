@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f3">
+    <meta name="description" content="Trasforma tabelle in immagini e PDF in fogli Excel, oppure aggiungile a un file esistente.">
+    <title>Tabella → Excel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Tabella in Excel, home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="7" fill="currentColor"/><path d="M10 11h12M10 16h12M10 21h5m4 0 2 2 3-4" stroke="#F8FAF6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>tabella<span class="brand-dot">.</span></span>
+      </a>
+      <div class="topbar-note"><span class="status-dot"></span> Conversione intelligente, senza complicazioni</div>
+      <a class="help-link" href="#come-funziona">Come funziona <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-icon">✳</span> DA DOCUMENTO A FOGLIO DI CALCOLO</div>
+          <h1>La tua tabella,<br><span>pronta per Excel.</span></h1>
+          <p>Carica una foto o un PDF. Estraiamo i dati, tu dai un’occhiata e scarichi il foglio pronto — anche aggiungendolo a un Excel che usi già.</p>
+          <div class="trust-row"><span class="trust-check">✓</span> Nessuna installazione <i></i><span class="trust-check">✓</span> File elaborati al volo</div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-file art-file-back"><span class="file-badge pdf-badge">PDF</span><span class="file-line line-long"></span><span class="file-line"></span><span class="file-line line-short"></span></div>
+          <div class="art-sparkle sparkle-one">✳</div><div class="art-sparkle sparkle-two">✦</div>
+          <div class="art-arrow">↗</div>
+          <div class="art-sheet">
+            <div class="sheet-heading"><span class="sheet-dot"></span><span class="sheet-dot"></span><span class="sheet-dot"></span><span class="sheet-name">tabella.xlsx</span></div>
+            <div class="sheet-grid"><span class="cell cell-head"></span><span class="cell cell-head"></span><span class="cell cell-head"></span><span class="cell cell-green">01</span><span class="cell">● ● ●</span><span class="cell">€ 24,90</span><span class="cell cell-green">02</span><span class="cell">● ● ●</span><span class="cell">€ 18,50</span><span class="cell cell-green">03</span><span class="cell">● ● ●</span><span class="cell">€ 32,00</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Converti una tabella">
+        <div class="step-heading">
+          <div class="step-number">01</div>
+          <div><h2>Partiamo dai tuoi file</h2><p>Carica il documento da cui leggere la tabella. Hai già un Excel? Puoi aggiungerlo qui.</p></div>
+        </div>
+
+        <div class="upload-grid">
+          <section class="upload-card primary-upload">
+            <div class="upload-title-row"><span class="upload-icon document-icon">▤</span><div><h3>Immagine o PDF</h3><span class="required-tag">OBBLIGATORIO</span></div></div>
+            <label class="dropzone" id="document-drop" for="document-input" tabindex="0">
+              <input id="document-input" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf">
+              <span class="drop-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 21V7m0 0-5 5m5-5 5 5M7 20v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="drop-main">Trascina qui il file</span>
+              <span class="drop-sub">oppure <span class="browse-link">sfoglia dal dispositivo</span></span>
+              <span class="file-hint">PNG, JPG o PDF <i></i> massimo 15 MB</span>
+              <span class="selected-file" id="document-selected" hidden></span>
+            </label>
+            <button class="file-remove" id="remove-document" type="button" hidden>Rimuovi file</button>
+          </section>
+
+          <section class="upload-card secondary-upload">
+            <div class="upload-title-row"><span class="upload-icon excel-icon">▦</span><div><h3>Excel esistente <span class="optional-tag">OPZIONALE</span></h3><span class="upload-subtitle">Aggiungi le nuove righe a un foglio che hai già.</span></div></div>
+            <label class="dropzone excel-dropzone" id="workbook-drop" for="workbook-input" tabindex="0">
+              <input id="workbook-input" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <span class="drop-icon excel-drop-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M9 4h9l6 6v17H9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M18 4v7h7M11 16l6 7m0-7-6 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="drop-main" id="workbook-drop-main">Trascina qui il tuo Excel</span>
+              <span class="drop-sub">oppure <span class="browse-link">scegli un file</span></span>
+              <span class="file-hint">Formato .xlsx <i></i> massimo 15 MB</span>
+              <span class="selected-file" id="workbook-selected" hidden></span>
+            </label>
+            <button class="file-remove" id="remove-workbook" type="button" hidden>Rimuovi file</button>
+          </section>
+        </div>
+        <div class="privacy-note"><span aria-hidden="true">ⓘ</span> L’immagine/PDF viene inviato a Gemini; i file non vengono salvati dall’app.</div>
+        <div class="action-row">
+          <p id="input-error" class="inline-error" role="alert" hidden></p>
+          <button class="button button-primary" id="extract-button" type="button" disabled><span>Estrai la tabella</span><span class="button-arrow">→</span></button>
+        </div>
+      </section>
+
+      <section class="results-section" id="results-section" hidden>
+        <div class="section-divider"></div>
+        <div class="step-heading">
+          <div class="step-number">02</div>
+          <div><h2>Rivedi i dati estratti</h2><p>Controlla la tabella e correggi quello che serve prima di creare l’Excel.</p></div>
+          <span class="row-count" id="row-count"></span>
+        </div>
+        <div class="editor-card">
+          <div class="editor-toolbar"><div><span class="table-ready"><span></span> TABELLA PRONTA</span><span class="edit-hint"> · fai clic su una cella per modificarla</span></div><button class="text-button" id="add-row-button" type="button">＋ Aggiungi riga</button></div>
+          <div class="table-scroll"><table class="data-table" id="data-table"></table></div>
+          <div class="editor-footer"><span id="table-summary"></span><button class="text-button" id="reset-table-button" type="button">↺ Ripristina estrazione</button></div>
+        </div>
+
+        <section class="merge-section" id="merge-section" hidden>
+          <div class="section-divider"></div>
+          <div class="step-heading compact-heading">
+            <div class="step-number">03</div>
+            <div><h2>Aggiungiamo le righe al tuo Excel</h2><p>Le intestazioni già presenti sono abbinate automaticamente. Puoi cambiare ogni scelta.</p></div>
+          </div>
+          <div class="merge-card">
+            <div class="merge-file-row"><span class="upload-icon excel-icon">▦</span><div><strong id="merge-filename"></strong><span id="merge-sheet-count"></span></div></div>
+            <label class="field-label" for="sheet-select">Scegli il foglio di destinazione</label>
+            <select class="select-control" id="sheet-select"></select>
+            <div class="workbook-preview" id="workbook-preview" hidden></div>
+            <div class="match-summary" id="match-summary"></div>
+            <div class="mapping-table-wrap"><table class="mapping-table"><thead><tr><th>COLONNA ESTRATTA</th><th>AZIONE NEL FILE EXCEL</th></tr></thead><tbody id="mapping-rows"></tbody></table></div>
+            <p class="mapping-footnote"><span>ⓘ</span> Le colonne non selezionate vengono ignorate. Le nuove colonne vengono aggiunte a destra, senza sovrascrivere i dati esistenti.</p>
+          </div>
+        </section>
+
+        <div class="export-row"><div><strong>Pronto quando vuoi.</strong><span id="export-description">Scarica la tabella in formato Excel.</span></div><button class="button button-dark" id="export-button" type="button"><span>Scarica Excel</span><span class="download-icon">↓</span></button></div>
+        <p class="inline-error export-error" id="export-error" role="alert" hidden></p>
+      </section>
+
+      <section class="how-section" id="come-funziona">
+        <div class="how-title"><span class="eyebrow">SEMPLICE COME 1, 2, 3</span><h2>Da documento a Excel.<br><span>In pochi passaggi.</span></h2></div>
+        <div class="how-steps">
+          <article><span class="how-number">01</span><span class="how-icon">↥</span><h3>Carica</h3><p>Scegli una foto o un PDF. Se vuoi, aggiungi anche il tuo Excel.</p></article>
+          <article><span class="how-number">02</span><span class="how-icon">✳</span><h3>Controlla</h3><p>Verifica le righe lette e abbina le colonne al foglio esistente.</p></article>
+          <article><span class="how-number">03</span><span class="how-icon">↓</span><h3>Scarica</h3><p>Ricevi il tuo file .xlsx aggiornato, pronto da usare.</p></article>
+        </div>
+      </section>
+      <footer><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true">▦</span><span>tabella<span class="brand-dot">.</span></span></a><span>Un piccolo aiuto per i fogli di tutti i giorni.</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
